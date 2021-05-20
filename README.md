@@ -4,7 +4,7 @@ This project is a skeleton project for querying data from the [HAPI FHIR public 
 
 ### Getting Started:
 
-* [ x ] Take a few minutes to familiarize yourself with the [FHIR Standard](http://hl7.org/fhir/) for health data exchange. In particular you might want to read the [Executive Summary](http://hl7.org/fhir/summary.html) and the [Developer Introduction](http://hl7.org/fhir/overview-dev.html)
+* [x] Take a few minutes to familiarize yourself with the [FHIR Standard](http://hl7.org/fhir/) for health data exchange. In particular you might want to read the [Executive Summary](http://hl7.org/fhir/summary.html) and the [Developer Introduction](http://hl7.org/fhir/overview-dev.html)
 
 * [x] In addition, take a few minutes to familiarize yourself with [Angular](https://angular.io/docs). Understand the basics of component structures, HTTP calls, and other basics covered in the [Fundamentals](https://angular.io/guide/architecture) section.
   
@@ -44,4 +44,5 @@ This project is a skeleton project for querying data from the [HAPI FHIR public 
 
 * [ ] Please include unit tests for your work.
 
-* [x] Commit your work.
+* [x
+] Commit your work.
