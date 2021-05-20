@@ -33,6 +33,31 @@ export class ApiService {
     });
   }
 
+  /**
+   * Retrieves a list of patients given their birthdate or their name
+   * @param date - birthdate of the patients to search
+   * @param name - name of the patients to search
+   * @returns a list of patients
+   */
+  getPatientsByBirthDateAndName(date: string, patientName: string) {
+    return this.httpClient.get<IResponse>(`${environment.queryURI}${this.PATIENT}`, {
+      headers: this.getHeaders(),
+      params: this.getParams(date, patientName),
+    });
+  }
+
+  private getParams(date: string, patientName: string) {
+    if (date !== '' && patientName !== '') {
+      return { birthdate: date, name: patientName };
+    } else if (date !== '' && patientName === '') {
+      return { birthdate: date };
+    } else if (patientName !== '' && date === '') {
+      return { name: patientName };
+    } else {
+      return {};
+    }
+  }
+
   private getHeaders(): HttpHeaders {
     const headers = new HttpHeaders({
       'Content-Type': 'application/fhir+json',
