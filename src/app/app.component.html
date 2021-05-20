@@ -1,1 +1,16 @@
-<app-patient-table></app-patient-table>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Patients Information</a>
+    <ng-template ngbNavContent>
+      <app-patient-table></app-patient-table>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink>Questionnaire</a>
+    <ng-template ngbNavContent>
+      <app-questionnaire></app-questionnaire>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

@@ -8,4 +8,6 @@ import { IEntry, IResponse } from './models/response';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent {
+  active = 1;
+}

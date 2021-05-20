@@ -10,9 +10,10 @@ import { ApiService } from './services/api-service.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PatientTableComponent } from './components/patient-table/patient-table.component';
 import { DefaultEmptyValuePipe } from './pipes/default-empty-value.pipe';
+import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
 
 @NgModule({
-  declarations: [AppComponent, PatientTableComponent, DefaultEmptyValuePipe],
+  declarations: [AppComponent, PatientTableComponent, DefaultEmptyValuePipe, QuestionnaireComponent],
   imports: [BrowserModule, HttpClientModule, RouterModule, NgbModule, ReactiveFormsModule, FormsModule],
   providers: [ApiService, DatePipe],
   bootstrap: [AppComponent],
