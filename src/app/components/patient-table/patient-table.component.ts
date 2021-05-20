@@ -153,7 +153,7 @@ export class PatientTableComponent implements OnInit {
 
   private sortByBirthDate(): void {
     this.patients.sort((a: IPatient, b: IPatient) => {
-      return Date.parse(a.birthDate) - Date.parse(b.birthDate);
+      return Date.parse(b.birthDate) - Date.parse(a.birthDate);
     });
   }
 
