@@ -29,7 +29,5 @@ export class QuestionnaireComponent implements OnInit {
       question.answer = this.form.get(question.linkId.toString()).value;
     });
     this.payLoad = JSON.stringify(this.formQuestions, null, 2);
-      // .replace(' ', '&nbsp;')
-      // .replace('\n', '<br/>');
   }
 }

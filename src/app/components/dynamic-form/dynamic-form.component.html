@@ -15,7 +15,7 @@
       <div *ngSwitchCase="'group'">
         <div *ngFor="let item of question.item" [formGroup]="form.get(question.linkId.toString())">
           <label [attr.for]="item.linkId">{{ item.text }}</label>
-          <div [ngSwitch]="item.type"  class="mb-3">
+          <div [ngSwitch]="item.type" class="mb-3">
             <input *ngSwitchCase="'string'" [formControlName]="item.linkId" [id]="item.linkId" [type]="item.type" />
             <input *ngSwitchCase="'date'" [formControlName]="item.linkId" [id]="question.linkId" type="date" />
 
