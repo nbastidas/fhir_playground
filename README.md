@@ -44,5 +44,4 @@ This project is a skeleton project for querying data from the [HAPI FHIR public 
 
 * [ ] Please include unit tests for your work.
 
-* [x
-] Commit your work.
+* [x] Commit your work.
