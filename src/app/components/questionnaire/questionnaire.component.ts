@@ -10,9 +10,10 @@ import { BaseForm } from './models/base-form';
   styleUrls: ['./questionnaire.component.scss'],
 })
 export class QuestionnaireComponent implements OnInit {
-  formQuestions: BaseForm<string>[]| null = [];
+  formQuestions: BaseForm<string>[] | null = [];
   form: FormGroup;
   payLoad = '';
+  CONTROL = 'controls';
 
   constructor(private questionnaireService: QuestionnaireService, private formService: FormService) {}
 
@@ -26,7 +27,14 @@ export class QuestionnaireComponent implements OnInit {
 
   onSubmit() {
     this.formQuestions.forEach((question: BaseForm<string>) => {
-      question.answer = this.form.get(question.linkId.toString()).value;
+      if (question.type === 'group') {
+        question.item.forEach((item: BaseForm<string>) => {
+          const nestedForm = this.form.get(question.linkId.toString());
+          item.answer = nestedForm[this.CONTROL][item.linkId].value;
+        });
+      } else {
+        question.answer = this.form.get(question.linkId.toString()).value;
+      }
     });
     this.payLoad = JSON.stringify(this.formQuestions, null, 2);
   }
