@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { IResponse } from '../models/response';
+import { IResponse } from '../components/patient-table/models/response';
 
 @Injectable({
   providedIn: 'root',

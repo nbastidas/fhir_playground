@@ -1,9 +1,9 @@
 import { Component, OnInit, ɵCompiler_compileModuleSync__POST_R3__ } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IName } from 'src/app/models/name';
-import { IPatient } from 'src/app/models/patient';
-import { IResponse, IEntry } from 'src/app/models/response';
-import { ITelecom } from 'src/app/models/telecom';
+import { IName } from 'src/app/components/patient-table/models/name';
+import { IPatient } from 'src/app/components/patient-table/models/patient';
+import { IResponse, IEntry } from 'src/app/components/patient-table/models/response';
+import { ITelecom } from 'src/app/components/patient-table/models/telecom';
 import { ApiService } from 'src/app/services/api-service.service';
 
 @Component({

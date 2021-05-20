@@ -1,0 +1,31 @@
+<div *ngIf="form">
+  <div [formGroup]="form">
+    <label [attr.for]="question.linkId">{{ question.text }}</label>
+
+    <div [ngSwitch]="question.type" class="mb-3">
+      <input *ngSwitchCase="'string'" [formControlName]="question.linkId" [id]="question.linkId" [type]="question.type" />
+
+      <select [id]="question.linkId" *ngSwitchCase="'boolean'" [formControlName]="question.linkId">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <input *ngSwitchCase="'date'" [formControlName]="question.linkId" [id]="question.linkId" type="date" />
+
+      <div *ngSwitchCase="'group'">
+        <div *ngFor="let item of question.item" [formGroup]="form.get(question.linkId.toString())">
+          <label [attr.for]="item.linkId">{{ item.text }}</label>
+          <div [ngSwitch]="item.type"  class="mb-3">
+            <input *ngSwitchCase="'string'" [formControlName]="item.linkId" [id]="item.linkId" [type]="item.type" />
+            <input *ngSwitchCase="'date'" [formControlName]="item.linkId" [id]="question.linkId" type="date" />
+
+            <select [id]="item.linkId" *ngSwitchCase="'boolean'" [formControlName]="item.linkId">
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

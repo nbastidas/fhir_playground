@@ -1,1 +1,26 @@
-<p>questionnaire works!</p>
+<div class="container mt-4" *ngIf="form">
+  <div class="row">
+    <h2>Questionnaire</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div *ngFor="let question of formQuestions" class="form-row">
+          <app-dynamic-form [question]="question" [form]="form"></app-dynamic-form>
+        </div>
+
+        <div class="form-row">
+          <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Save</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="payLoad" class="form-row">
+        <h2>Saved the following values</h2>
+        <br />
+        <pre>{{ payLoad }}</pre>
+      </div>
+    </div>
+  </div>
+</div>
