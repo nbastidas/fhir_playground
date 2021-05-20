@@ -1,0 +1,68 @@
+<div [formGroup]="searchForm" class="form-inline">
+  <input class="form-control" type="date" formControlName="date" placeholder="dd-mm-yyyy"/>
+  <input class="form-control" type="text" formControlName="search" placeholder="Search by Patient Name"/>
+  <div class="invalid-feedback">
+    <i class="far fa-times-circle fa-xs"></i>&nbsp; Please enter only alphabetic characters.
+  </div>
+  <button class="btn btn-primary" [disabled]="loading || this.searchForm.invalid" (click)="getQueue()"  type="button"> Search </button>
+</div>
+
+<div *ngIf="!loading">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Photo</th>
+        <th scope="col">ID</th>
+        <th scope="col">Status</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Fax</th>
+        <th scope="col">Gender</th>
+        <th scope="col">BirthDate</th>
+        <th scope="col">Deceased Date</th>
+        <th scope="col">Address</th>
+        <th scope="col">Marital Status</th>
+        <th scope="col">Contact Name</th>
+        <th scope="col">Contact Phone</th>
+        <th scope="col">Contact Relationship</th>
+        <th scope="col">Preferred Language</th>
+        <th scope="col">General Practitioner</th>
+        <th scope="col">Managing Organization</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <ng-container *ngIf="!hasProfilePhoto(patient); else profilePhoto">
+            <div class="photo pt-2">N/A</div>
+          </ng-container>
+        </td>
+        <td>{{ patient.id }}</td>
+        <td>{{ getStatus(patient) }}</td>
+        <td>{{ getFullNameFromArray(patient.name) }}</td>
+        <td>{{ getTelecomByName(patient.telecom, 'email') }}</td>
+        <td>{{ getTelecomByName(patient.telecom, 'phone') }}</td>
+        <td>{{ getTelecomByName(patient.telecom, 'fax') }}</td>
+        <td>{{ patient.gender | defaultEmptyValue }}</td>
+        <td>{{ patient.birthDate | defaultEmptyValue }}</td>
+        <td>{{ patient.deceased?.deceasedDateTime | defaultEmptyValue }}</td>
+        <td>{{ getAddress(patient) }}</td>
+        <td>{{ patient.maritalStatus?.text | defaultEmptyValue }}</td>
+        <td>{{ getContactName(patient) }}</td>
+        <td>{{ getContactPhone(patient) }}</td>
+        <td>{{ getContactRelationship(patient) }}</td>
+        <td>{{ getLanguage(patient) }}</td>
+        <td>{{ getGeneralPractitioner(patient) }}</td>
+        <td>{{ patient.managingOrganization?.reference | defaultEmptyValue }}</td>
+        <ng-template #profilePhoto>
+          <img [src]="patient.photo.url" class="photo" />
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+
+  Request Time: {{ requestTime | date: 'mm:ss.SSS' }}
+</div>
